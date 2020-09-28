@@ -1,12 +1,13 @@
 
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.*;
 
 public class WikiConnectionTest {
     @Test
     void ConnectionTest() {
-        Assertions.assertEquals(true, new WikiConnection(""));
+        WikiConnection connection = new WikiConnection();
+        Assertions.assertEquals("Connection Successful",connection.WikiConnection());
     }
 
 
