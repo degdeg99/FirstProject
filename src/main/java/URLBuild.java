@@ -9,7 +9,7 @@ public class URLBuild {//this makes the url
     private String format;
     private URL finishedURL = null;
 
-    public java.io.InputStream URLBuild(String page)throws IOException {
+    public java.io.InputStream URLBuilder(String page)throws IOException {
         wikiURL = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&titles=";
         format = "&rvprop=timestamp%7Cuser&rvlimit=20&titles=";
         finishedURL = new URL(wikiURL+ URLEncoder.encode(page,"UTF-8")+format);
