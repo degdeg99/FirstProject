@@ -3,9 +3,11 @@ import java.util.Scanner;
 
 public class UI {
     public void runUI() throws IOException {
+        WikiConnection wikiConnection = new WikiConnection();
         Scanner scanner = new Scanner(System.in);
         System.out.println("HELLO\n\nPlease Type Your Search Below.");
         String search = scanner.nextLine();
+        System.out.println(wikiConnection.WikiConnection());
         URLBuild url = new URLBuild();
         try {
             url.URLBuilder(search);

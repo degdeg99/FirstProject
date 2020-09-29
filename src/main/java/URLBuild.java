@@ -12,7 +12,7 @@ public class URLBuild {//this makes the url
 
     public java.io.InputStream URLBuilder(String page)throws IOException {
         wikiURL = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&titles=";
-        format = "&rvprop=timestamp|user&rvlimit=4&redirects";
+        format = "&rvprop=timestamp|user&rvlimit=20&redirects";
         finishedURL = new URL(wikiURL+ URLEncoder.encode(page, StandardCharsets.UTF_8)+format);
         URLConnection connection = finishedURL.openConnection();
         connection.setRequestProperty("User","FirstProject (drankin@bsu.edu)");
