@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 public class URLBuild {//this makes the url
     private  String wikiURL;
@@ -11,8 +12,8 @@ public class URLBuild {//this makes the url
 
     public java.io.InputStream URLBuilder(String page)throws IOException {
         wikiURL = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&titles=";
-        format = "&rvprop=timestamp%7Cuser&rvlimit=20&titles=";
-        finishedURL = new URL(wikiURL+ URLEncoder.encode(page,"UTF-8")+format);
+        format = "&rvprop=timestamp|user&rvlimit=4&redirects";
+        finishedURL = new URL(wikiURL+ URLEncoder.encode(page, StandardCharsets.UTF_8)+format);
         URLConnection connection = finishedURL.openConnection();
         connection.setRequestProperty("User","FirstProject (drankin@bsu.edu)");
         connection.connect();

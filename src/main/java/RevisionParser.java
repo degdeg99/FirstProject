@@ -18,9 +18,9 @@ public class RevisionParser {// this is to parse the revisions out of the JSON f
     JsonArray revisions = null;
 
 
-    for(Map.Entry<String, JsonElement> entry :  pages.entrySet()){
-        JsonObject entryObject = (JsonObject) entry.getValue();
-        revisions = entryObject.getAsJsonArray("revisions");
+        for (Map.Entry<String, JsonElement> entry : pages.entrySet()) {
+            JsonObject entryObject = entry.getValue().getAsJsonObject();
+            revisions = entryObject.getAsJsonArray("revisions");
     }
     return revisions;
     }

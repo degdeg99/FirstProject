@@ -6,7 +6,6 @@ public class UI {
         Scanner scanner = new Scanner(System.in);
         System.out.println("HELLO\n\nPlease Type Your Search Below.");
         String search = scanner.nextLine();
-        search.replaceAll(" ", "");
         URLBuild url = new URLBuild();
         try {
             url.URLBuilder(search);
@@ -15,7 +14,6 @@ public class UI {
         }
         RevisionParser revisionParser = new RevisionParser();
         EditorParser editorParser = new EditorParser();
-        revisionParser.GetRevisions(url.URLBuilder(search));
-        editorParser.getEditors(revisionParser, url.URLBuilder(search));
+        editorParser.getEditors(revisionParser.GetRevisions(url.URLBuilder(search)), url.URLBuilder(search));
     }
 }
