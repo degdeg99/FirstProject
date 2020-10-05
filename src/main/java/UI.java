@@ -16,6 +16,13 @@ public class UI {
         }
         RevisionParser revisionParser = new RevisionParser();
         EditorParser editorParser = new EditorParser();
-        editorParser.getEditors(revisionParser.GetRevisions(url.URLBuilder(search)), url.URLBuilder(search));
+        System.out.printf("\n\n1:See most recent editors\n2:See editors with the most activity\n\n");
+        int selection = Integer.parseInt(scanner.nextLine());
+        if(selection == 1) {
+            editorParser.getEditors(revisionParser.GetRevisions(url.URLBuilder(search)));
+        }
+        if(selection == 2){
+            editorParser.getMostEdits(revisionParser.GetRevisions(url.URLBuilder(search)));
+        }
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="WikiConnectionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-09-28T22:15:45" hostname="DEGPC" time="0.145">
+<testsuite name="WikiConnectionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-09-29T19:55:49" hostname="DEGPC" time="0.16">
   <properties/>
-  <testcase name="ConnectionTest()" classname="WikiConnectionTest" time="0.145"/>
+  <testcase name="ConnectionTest()" classname="WikiConnectionTest" time="0.16"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
