@@ -1,3 +1,5 @@
+package edu.bsu.cs222;
+
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;

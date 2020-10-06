@@ -1,3 +1,5 @@
+package edu.bsu.cs222;
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -35,9 +37,11 @@ public class URLBuild {
         StringBuilder jsonStringBuilder = new StringBuilder();
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection));
         String jsonDataString;
+
         while ((jsonDataString = bufferedReader.readLine()) != null) {
             jsonStringBuilder.append(jsonDataString).append("\n");
         }
+
         String websiteInfo = jsonStringBuilder.toString().trim();
         return (JsonObject) JsonParser.parseString(websiteInfo);
     }

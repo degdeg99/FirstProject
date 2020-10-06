@@ -1,4 +1,7 @@
+package edu.bsu.cs222;
+
 import com.google.gson.JsonObject;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -37,10 +40,13 @@ public class ActiveEditors {
     public static String createSortedEditsString(List<RevisionParser> editorsList) {
         if (editorsList.isEmpty()) {
             return "\n\n\nCan not find a article for the search";
+
         } else {
             StringBuilder numberOfEditsString = new StringBuilder();
+
             for (RevisionParser editor : editorsList) {
                 String editorAndEdits ="\n\n" + editor.getNumberOfEdits() + " edits made by Editor: " + editor.getUser() ;
+
                 if (!numberOfEditsString.toString().contains(editorAndEdits)) {
                     numberOfEditsString.append(editorAndEdits);
                 }

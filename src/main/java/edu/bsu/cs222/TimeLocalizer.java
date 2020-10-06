@@ -1,3 +1,5 @@
+package edu.bsu.cs222;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
