@@ -9,6 +9,8 @@ public class EditorParser {
 
     public String getEditors(JsonArray revision) throws ParseException {
         String finalString = "";
+        if(revision == null)
+            return "";
         for (int i = 0; i < revision.size(); i++) {
 
             JsonObject submission = revision.get(i).getAsJsonObject();
@@ -25,6 +27,8 @@ public class EditorParser {
     }
     public String getMostEdits(JsonArray revision){
         HashMap<JsonElement, Integer> users = new HashMap<>();
+        if(revision == null)
+            return ("\n\n\nThere is no Wiki article with this tittle");
 
         for(int i=0;i<revision.size();i++){
             int duplicate = 0;

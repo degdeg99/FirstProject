@@ -45,7 +45,7 @@ public class Main extends Application {
     }
     private void buttonClicked(String search) throws IOException, ParseException {
         AlertBox alertBox = new AlertBox();
-        alertBox.newWindow("mostEdits",search);
+        alertBox.newWindow("Search Results",search);
 
 
     }
