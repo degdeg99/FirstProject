@@ -7,6 +7,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 public class Main extends Application {
 
@@ -28,7 +29,7 @@ public class Main extends Application {
         SearchButton.setOnAction(e -> {
             try {
                 buttonClicked(SearchTF.getText());
-            } catch (IOException ioException) {
+            } catch (IOException | ParseException ioException) {
                 ioException.printStackTrace();
             }
         });
@@ -42,7 +43,7 @@ public class Main extends Application {
 
 
     }
-    private void buttonClicked(String search) throws IOException {
+    private void buttonClicked(String search) throws IOException, ParseException {
         AlertBox alertBox = new AlertBox();
         alertBox.newWindow("mostEdits",search);
 

@@ -2,23 +2,24 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.ParseException;
+import java.util.*;
 
 public class EditorParser {
 
-    public String getEditors(JsonArray revision) {
+    public String getEditors(JsonArray revision) throws ParseException {
         String finalString = "";
         for (int i = 0; i < revision.size(); i++) {
 
             JsonObject submission = revision.get(i).getAsJsonObject();
             JsonElement editor = submission.get("user");
             JsonObject submissionTime = revision.get(i).getAsJsonObject();
-            JsonElement timeStamp = submissionTime.get("timestamp");
+            String timeStamp = submissionTime.get("timestamp").getAsString();
 
-            finalString = finalString + ("\nEditor "+(i+1)+": "+ editor +"\nTime Stamp: " + timeStamp);
+            TimeLocalizer timeLocalizer = new TimeLocalizer();
+            Date dateTimeStamp = timeLocalizer.localizeTime(timeStamp);
+
+            finalString = finalString + ("\nEditor "+(i+1)+": "+ editor +"\nTime Stamp: " + dateTimeStamp);
         }
         return finalString;
     }

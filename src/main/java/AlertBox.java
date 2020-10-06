@@ -5,9 +5,10 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 public class AlertBox {
-    public static void newWindow(String title,String search) throws IOException {
+    public static void newWindow(String title,String search) throws IOException, ParseException {
         Stage window = new Stage();
 
         window.initModality(Modality.APPLICATION_MODAL);

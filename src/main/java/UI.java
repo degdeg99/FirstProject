@@ -1,8 +1,9 @@
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class UI {
-    public void runUI() throws IOException {
+    public void runUI() throws IOException, ParseException {
         WikiConnection wikiConnection = new WikiConnection();
         Scanner scanner = new Scanner(System.in);
         System.out.println("HELLO\n\nPlease Type Your Search Below.");
