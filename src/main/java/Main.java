@@ -8,7 +8,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
+
+import java.io.IOException;
+
 public class Main extends Application {
+    public static String search = "";
 
 
     public static void main(String[] args) {
@@ -23,8 +27,13 @@ public class Main extends Application {
         EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e)
             {
-                UI.search = SearchTF.getText();
-                UI();
+                search = SearchTF.getText();
+                UI ui= new UI();
+                try {
+                    ui.runUI();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         };
         SearchButton.setOnAction(event);
