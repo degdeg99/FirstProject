@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 public class WikiRedirect {
     public String printRedirectList(JsonArray redirectList) {
         if (redirectList == null) {
-            return null;
+            return "";
         }
         String from ;
         String to ;
@@ -14,8 +14,8 @@ public class WikiRedirect {
             from = jsonObject.get("from").getAsString();
             to = jsonObject.get("to").getAsString();
 
-            return ("\nredirected from"+from+ "to"+ to);
+            return ("redirected from "+from+ " to "+ to);
         }
-        return null;
+        return "";
     }
 }

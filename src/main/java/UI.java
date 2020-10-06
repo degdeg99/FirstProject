@@ -10,7 +10,7 @@ public class UI {
         System.out.println(wikiConnection.WikiConnection());
         URLBuild url = new URLBuild();
         try {
-            url.URLBuilder(Main.search);
+            url.URLBuilder(search);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -21,10 +21,10 @@ public class UI {
         System.out.print("\n\n1:See most recent editors\n2:See editors with the most activity\n\n");
         int selection = Integer.parseInt(scanner.nextLine());
         if(selection == 1) {
-            editorParser.getEditors(revisionParser.GetRevisions(url.URLBuilder(Main.search)));
+            editorParser.getEditors(revisionParser.GetRevisions(url.URLBuilder(search)));
         }
         if(selection == 2){
-            editorParser.getMostEdits(revisionParser.GetRevisions(url.URLBuilder(Main.search)));
+            editorParser.getMostEdits(revisionParser.GetRevisions(url.URLBuilder(search)));
         }
     }
 }

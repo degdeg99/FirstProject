@@ -10,7 +10,7 @@ import java.util.Map;
 public class EditorParser {
 
     public String getEditors(JsonArray revision) {
-        String finalString = null;
+        String finalString = "";
         for (int i = 0; i < revision.size(); i++) {
 
             JsonObject submission = revision.get(i).getAsJsonObject();
@@ -18,7 +18,7 @@ public class EditorParser {
             JsonObject submissionTime = revision.get(i).getAsJsonObject();
             JsonElement timeStamp = submissionTime.get("timestamp");
 
-            finalString = finalString + ("Editor: "+ editor +"\nTime Stamp:" + timeStamp);
+            finalString = finalString + ("\nEditor "+(i+1)+": "+ editor +"\nTime Stamp: " + timeStamp);
         }
         return finalString;
     }
@@ -51,7 +51,7 @@ public class EditorParser {
                 if (maxEntry == null || entry.getValue() > maxEntry.getValue()) {
                 maxEntry = entry;
             } }
-        String finalString = null;
+        String finalString = "";
         for (int i = maxEntry.getValue(); i >= 0; i--) {
             for (int j = 0; j < users.size(); j++) {
                 if (valueList.get(i) == j) {
