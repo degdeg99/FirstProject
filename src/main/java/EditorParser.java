@@ -54,7 +54,7 @@ public class EditorParser {
         for (int i = maxEntry.getValue(); i >= 0; i--) {
             for (int j = 0; j < users.size(); j++) {
                 if (valueList.get(i) == j) {
-                    System.out.println("User: " + keyList.get(i));
+                    System.out.println("Editor: " + keyList.get(i));
                     System.out.println("Number of Edits: " + valueList.get(i));
                     System.out.println();
                 }

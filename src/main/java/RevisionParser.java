@@ -10,18 +10,25 @@ import java.util.Map;
 
 public class RevisionParser {// this is to parse the revisions out of the JSON file
 
-    public JsonArray GetRevisions(InputStream connection){
-    Reader reader = new InputStreamReader(connection);
-    JsonElement rootElement = JsonParser.parseReader(reader);
-    JsonObject rootObject = rootElement.getAsJsonObject();
-    JsonObject pages = rootObject.getAsJsonObject("query").getAsJsonObject("pages");
-    JsonArray revisions = null;
+    public JsonArray GetRevisions(InputStream connection) {
+        Reader reader = new InputStreamReader(connection);
+        JsonElement rootElement = JsonParser.parseReader(reader);
+        JsonObject rootObject = rootElement.getAsJsonObject();
+        JsonObject pages = rootObject.getAsJsonObject("query").getAsJsonObject("pages");
+        JsonArray revisions = null;
 
 
         for (Map.Entry<String, JsonElement> entry : pages.entrySet()) {
             JsonObject entryObject = entry.getValue().getAsJsonObject();
             revisions = entryObject.getAsJsonArray("revisions");
+        }
+        return revisions;
     }
-    return revisions;
+
+    public JsonArray getRedirectList(InputStream connection) {
+        Reader reader = new InputStreamReader(connection);
+        JsonElement rootElement = JsonParser.parseReader(reader);
+        JsonObject rootObject = rootElement.getAsJsonObject();
+        return rootObject.getAsJsonObject("query").getAsJsonArray("redirects");
     }
 }

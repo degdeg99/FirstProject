@@ -14,9 +14,11 @@ public class UI {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        WikiRedirect wikiRedirect = new WikiRedirect();
         RevisionParser revisionParser = new RevisionParser();
         EditorParser editorParser = new EditorParser();
-        System.out.printf("\n\n1:See most recent editors\n2:See editors with the most activity\n\n");
+        wikiRedirect.printRedirectList(revisionParser.getRedirectList(url.URLBuilder(search)));
+        System.out.print("\n\n1:See most recent editors\n2:See editors with the most activity\n\n");
         int selection = Integer.parseInt(scanner.nextLine());
         if(selection == 1) {
             editorParser.getEditors(revisionParser.GetRevisions(url.URLBuilder(search)));
