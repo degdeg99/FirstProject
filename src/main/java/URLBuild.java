@@ -4,9 +4,8 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
-public class URLBuild {//this makes the url
+public class URLBuild {
     private  String wikiURL;
-    private String page;
     private String format;
     private URL finishedURL = null;
 

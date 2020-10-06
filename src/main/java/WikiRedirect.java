@@ -3,16 +3,19 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 public class WikiRedirect {
-    public void printRedirectList(JsonArray redirectList) {
+    public String printRedirectList(JsonArray redirectList) {
         if (redirectList == null) {
-            return;
+            return null;
         }
+        String from ;
+        String to ;
         for (JsonElement jsonElement : redirectList) {
             JsonObject jsonObject = jsonElement.getAsJsonObject();
-            String from = jsonObject.get("from").getAsString();
-            String to = jsonObject.get("to").getAsString();
+            from = jsonObject.get("from").getAsString();
+            to = jsonObject.get("to").getAsString();
 
-            System.out.printf("redirected from %s to %s\n",from,to);
+            return ("\nredirected from"+from+ "to"+ to);
         }
+        return null;
     }
 }

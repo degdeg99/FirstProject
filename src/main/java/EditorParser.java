@@ -9,8 +9,8 @@ import java.util.Map;
 
 public class EditorParser {
 
-    public void getEditors(JsonArray revision) {
-
+    public String getEditors(JsonArray revision) {
+        String finalString = null;
         for (int i = 0; i < revision.size(); i++) {
 
             JsonObject submission = revision.get(i).getAsJsonObject();
@@ -18,10 +18,11 @@ public class EditorParser {
             JsonObject submissionTime = revision.get(i).getAsJsonObject();
             JsonElement timeStamp = submissionTime.get("timestamp");
 
-            System.out.printf("Editor "+ (i+1) +": %s\nTime Stamp: %s\n\n",editor,timeStamp);
+            finalString = finalString + ("Editor: "+ editor +"\nTime Stamp:" + timeStamp);
         }
+        return finalString;
     }
-    public void getMostEdits(JsonArray revision){
+    public String getMostEdits(JsonArray revision){
         HashMap<JsonElement, Integer> users = new HashMap<>();
 
         for(int i=0;i<revision.size();i++){
@@ -50,15 +51,15 @@ public class EditorParser {
                 if (maxEntry == null || entry.getValue() > maxEntry.getValue()) {
                 maxEntry = entry;
             } }
-
+        String finalString = null;
         for (int i = maxEntry.getValue(); i >= 0; i--) {
             for (int j = 0; j < users.size(); j++) {
                 if (valueList.get(i) == j) {
-                    System.out.println("Editor: " + keyList.get(i));
-                    System.out.println("Number of Edits: " + valueList.get(i));
-                    System.out.println();
+                    finalString = finalString + ("\n\nEditor: " + keyList.get(i));
+                    finalString = finalString + ("\nNumber of Edits: " + valueList.get(i));
                 }
             }
         }
+        return finalString;
         }
     }

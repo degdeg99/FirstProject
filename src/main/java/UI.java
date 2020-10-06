@@ -6,6 +6,7 @@ public class UI {
         WikiConnection wikiConnection = new WikiConnection();
         Scanner scanner = new Scanner(System.in);
         System.out.println("HELLO\n\nPlease Type Your Search Below.");
+        String search = scanner.nextLine();
         System.out.println(wikiConnection.WikiConnection());
         URLBuild url = new URLBuild();
         try {

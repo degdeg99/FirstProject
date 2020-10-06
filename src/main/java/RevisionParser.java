@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.Map;
 
-public class RevisionParser {// this is to parse the revisions out of the JSON file
+public class RevisionParser {
 
     public JsonArray GetRevisions(InputStream connection) {
         Reader reader = new InputStreamReader(connection);
