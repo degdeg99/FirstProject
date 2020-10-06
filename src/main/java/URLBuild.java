@@ -1,4 +1,10 @@
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
@@ -18,5 +24,21 @@ public class URLBuild {
         connection.connect();
         return connection.getInputStream();
 
+    }
+    public static JsonObject collectJsonObjectFromWikipedia(String searchTerm) throws IOException {
+        URLBuild urlBuild = new URLBuild();
+        InputStream connection = urlBuild.URLBuilder(searchTerm);
+        return readJsonDataFrom(connection);
+    }
+
+    public static JsonObject readJsonDataFrom(InputStream connection) throws IOException {
+        StringBuilder jsonStringBuilder = new StringBuilder();
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection));
+        String jsonDataString;
+        while ((jsonDataString = bufferedReader.readLine()) != null) {
+            jsonStringBuilder.append(jsonDataString).append("\n");
+        }
+        String websiteInfo = jsonStringBuilder.toString().trim();
+        return (JsonObject) JsonParser.parseString(websiteInfo);
     }
 }

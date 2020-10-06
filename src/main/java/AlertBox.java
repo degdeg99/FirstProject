@@ -1,6 +1,6 @@
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -15,7 +15,7 @@ public class AlertBox {
         window.setTitle(title);
 
         EditorParser editorParser = new EditorParser();
-        RevisionParser revisionParser = new RevisionParser();
+        RevisionParser revisionParser = new RevisionParser(null,0);
         URLBuild url = new URLBuild();
         WikiRedirect wikiRedirect= new WikiRedirect();
 
@@ -24,14 +24,14 @@ public class AlertBox {
         redirect.setText(redirectMessage);
 
         Label mostEditsList = new Label();
-        String mostList = editorParser.getMostEdits(revisionParser.GetRevisions(url.URLBuilder(search)));
+        String mostList = ActiveEditors.createSortedEditsString(ActiveEditors.createNumberOfEditsArray(RevisionParser.parseRevisionsToList(url.collectJsonObjectFromWikipedia(search))));
         mostEditsList.setText("20 most recent Editors with the most Edits" + mostList);
 
         Label recentEditList = new Label();
         String recentList = editorParser.getEditors(revisionParser.GetRevisions(url.URLBuilder(search)));
         recentEditList.setText("\n20 most recent Editors\n\n" + recentList);
 
-        VBox layout = new VBox();
+        HBox layout = new HBox();
         layout.getChildren().addAll(redirect,recentEditList,mostEditsList);
 
         Scene scene = new Scene(layout);

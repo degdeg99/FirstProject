@@ -9,7 +9,7 @@ public class EditorParser {
 
     public String getEditors(JsonArray revision) throws ParseException {
         String finalString = "";
-        if(revision == null)
+        if (revision == null)
             return "";
         for (int i = 0; i < revision.size(); i++) {
 
@@ -21,50 +21,8 @@ public class EditorParser {
             TimeLocalizer timeLocalizer = new TimeLocalizer();
             Date dateTimeStamp = timeLocalizer.localizeTime(timeStamp);
 
-            finalString = finalString + ("\nEditor "+(i+1)+": "+ editor +"\nTime Stamp: " + dateTimeStamp);
+            finalString = finalString + ("\nEditor " + (i + 1) + ": " + editor + "\nTime Stamp: " + dateTimeStamp);
         }
         return finalString;
     }
-    public String getMostEdits(JsonArray revision){
-        HashMap<JsonElement, Integer> users = new HashMap<>();
-        if(revision == null)
-            return ("\n\n\nThere is no Wiki article with this tittle");
-
-        for(int i=0;i<revision.size();i++){
-            int duplicate = 0;
-            JsonObject submission = revision.get(i).getAsJsonObject();
-            JsonElement userToCheck = submission.get("user");
-
-            for (int j = i + 1; j < revision.size(); j++) {
-                JsonObject submissionToCheckAgainst = revision.get(j).getAsJsonObject();
-                JsonElement userToCheckAgainst = submissionToCheckAgainst.get("user");
-
-                if (userToCheck.equals(userToCheckAgainst)) {
-                    duplicate = duplicate + 1;
-                    revision.remove(userToCheckAgainst);
-                    users.put(userToCheck, duplicate + 1);
-                }
-
-                else if (!users.containsKey(userToCheck)) {
-                    users.put(userToCheck, duplicate + 1);
-                } } }
-
-            List<JsonElement> keyList = new ArrayList<>(users.keySet());
-            List<Integer> valueList = new ArrayList<>(users.values());
-            Map.Entry<JsonElement, Integer> maxEntry = null;
-            for (Map.Entry<JsonElement, Integer> entry : users.entrySet()) {
-                if (maxEntry == null || entry.getValue() > maxEntry.getValue()) {
-                maxEntry = entry;
-            } }
-        String finalString = "";
-        for (int i = maxEntry.getValue(); i >= 0; i--) {
-            for (int j = 0; j < users.size(); j++) {
-                if (valueList.get(i) == j) {
-                    finalString = finalString + ("\n\nEditor: " + keyList.get(i));
-                    finalString = finalString + ("\nNumber of Edits: " + valueList.get(i));
-                }
-            }
-        }
-        return finalString;
-        }
-    }
+}
