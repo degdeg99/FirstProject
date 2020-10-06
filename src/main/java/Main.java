@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 public class Main extends Application {
 
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -22,8 +23,8 @@ public class Main extends Application {
         EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e)
             {
-                String input = SearchTF.getText();
-                System.out.println(input);
+                UI.search = SearchTF.getText();
+                UI();
             }
         };
         SearchButton.setOnAction(event);
