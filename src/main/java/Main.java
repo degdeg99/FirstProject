@@ -1,8 +1,14 @@
-import java.io.IOException;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
-public class Main {
-    public static void main(String[] args) throws IOException {
-        UI ui= new UI();
-        ui.runUI();
+public class Main extends Application {
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) {
+
     }
 }
